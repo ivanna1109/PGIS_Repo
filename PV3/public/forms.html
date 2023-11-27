@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Forms</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+
+<body>
+	<center>
+		<h1>Programiranje i razvoj GIS</h1>
+		<h3>Forma</h3>
+	</center>
+	<form>
+		<div class="form-group">
+			<label for="imePrezime">Ime i prezime</label>
+			<input type="text" class="form-control" id="imePrezime" aria-describedby="emailHelp"
+				placeholder="Unesi ime i prezime..">
+			<small id="nameError" class="error_class"></small>
+		</div>
+		<div class="form-group">
+			<label for="email">Email</label>
+			<input type="email" class="form-control" id="email" placeholder="Unesi email..">
+			<small id="emailError" class="error_class"></small>
+		</div><br><center>
+			<button type="button" class="btn btn-dark" onclick="validateForm()">Potvrdi</button>
+		</center>
+	</form>
+	<script>
+		function validateForm(){
+			const name = document.getElementById('imePrezime').value
+			const email = document.getElementById('email').value
+			const nameError = document.getElementById('nameError')
+			const emailError = document.getElementById('emailError')
+			
+			nameError.innerHTML = ''
+			emailError.innerHTML = ''
+			if (name == '' && email == ''){
+				nameError.innerHTML = 'Ime i prezime nisu uneti'
+				emailError.innerHTML = 'Email nije unet'
+				return
+			}
+			if (name == ''){
+				nameError.innerHTML = 'Ime i prezime nisu uneti'
+				return
+			}
+			if (email == ''){
+				emailError.innerHTML = 'Email nije unet'
+				return
+			}
+			if (!validateEmail(email)){
+				emailError.innerHTML = 'Email nije ispravnog formata'
+				return
+			}
+		}
+		
+		function validateEmail(email){
+			const re = /\S+@\S+\.\S+/
+			return re.test(email)
+		}
+		
+	</script>
+</body>
+
+</html>
