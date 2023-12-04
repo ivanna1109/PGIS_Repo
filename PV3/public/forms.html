@@ -29,12 +29,14 @@
 			<button type="button" class="btn btn-dark" onclick="validateForm()">Potvrdi</button>
 		</center>
 	</form>
+	<div id="message"></div>
 	<script>
 		function validateForm(){
 			const name = document.getElementById('imePrezime').value
 			const email = document.getElementById('email').value
 			const nameError = document.getElementById('nameError')
 			const emailError = document.getElementById('emailError')
+			const message = document.getElementById('message')
 			
 			nameError.innerHTML = ''
 			emailError.innerHTML = ''
@@ -55,6 +57,10 @@
 				emailError.innerHTML = 'Email nije ispravnog formata'
 				return
 			}
+			name.innerHTML = ''
+			email.innerHTML = ''
+			//alert("Uspesno popunjena forma. Ime: "+name+" email: "+email)
+			message.innerHTML = "Uspesno popunjena forma.<br>Ime: "+name+"<br>Email: "+email
 		}
 		
 		function validateEmail(email){
