@@ -15,17 +15,18 @@
 
 <body>
 	<h2>Raster layers</h2>
-	<div id="map" style="width:900px; height:450px;"></div>
+	<div id="raster_map" style="width:80%; height:800px;"></div>
 
 	<script>
-		var map = L.map('map').setView({lon: 12.327145, lat: 45.438759}, 10);
-		//probati kod kuce da li radi
+		var map = L.map('raster_map').setView([45.438759, 12.3155], 11);
+		//probati kod kuce da li radi/*
 		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			maxZoom: 19,
 			attribution: '&copy; <a href="https://openstreetmap.org/copyright" > OpenStreetMap contributors</a> '
 		}).addTo(map);
-		var veniceLayer = L.tileLayer("http://localhost:8080/geoserver/pgisLayers/wms?", {
-			layers: 'buildings_UTM_Venice',
+		
+		var veniceLayer = L.tileLayer.wms("http://localhost:8080/geoserver/pgisLayers/wms?", {
+			layers: 'Landsat_ETM_2001-08-26_multispectral',
 			format: 'image/png',
 			transparent: true
 		}).addTo(map);
